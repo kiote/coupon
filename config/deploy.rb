@@ -7,7 +7,7 @@ set :repository,  "git@github.com:kiote/coupon.git"
 
 set :scm, :git
 
-set :deploy_to, "/srv/www/roradvice"
+set :deploy_to, "/srv/www/coupon"
 
 server "62.75.191.219", :web
 set :user, "apps"
