@@ -1,6 +1,7 @@
-class MailController < ApplicationController
-  require 'mail'
+require 'mail'
+require 'iconv'
 
+class MailController < ApplicationController
   def receiver
     message = Mail.new(params[:message])
     to   = "UTF-8"
