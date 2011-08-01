@@ -1,3 +1,3 @@
 Coupon::Application.routes.draw do
-  get "mail/receiver"
+  match "mail/receiver"
 end
