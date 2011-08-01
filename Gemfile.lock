@@ -33,6 +33,7 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     i18n (0.5.0)
+    kgio (2.5.0)
     mail (2.2.19)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
@@ -66,6 +67,9 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.29)
+    unicorn (3.7.0)
+      kgio (~> 2.3)
+      rack
 
 PLATFORMS
   ruby
@@ -73,3 +77,4 @@ PLATFORMS
 DEPENDENCIES
   rails (= 3.0.9)
   sqlite3
+  unicorn
