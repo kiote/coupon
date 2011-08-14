@@ -7,8 +7,10 @@ gem 'unicorn'
 gem 'ruby-gmail'
 gem 'mime'
 gem 'nokogiri'
+gem 'sanitize'
 
 group :development, :test do
+  gem 'rspec-rails'
   gem 'annotate'
   gem 'thin'
 end
