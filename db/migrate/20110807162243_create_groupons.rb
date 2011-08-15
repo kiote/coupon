@@ -1,6 +1,6 @@
 class CreateGroupons < ActiveRecord::Migration
   def change
-    create_table :groupons do |t|
+    create_table :daily_mails do |t|
       t.text :message
 
       t.timestamps
