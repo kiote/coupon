@@ -1,3 +1,3 @@
 Coupon::Application.routes.draw do
-  resources :groupons
+  resources :daily_mails
 end
