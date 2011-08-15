@@ -11,22 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110814105232) do
+ActiveRecord::Schema.define(:version => 20110807162243) do
 
-  create_table "daily_mails", :force => true do |t|
+  create_table "groupons", :force => true do |t|
     t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "offers", :force => true do |t|
-    t.string   "title"
-    t.string   "href"
-    t.integer  "daily_mail_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "offers", ["daily_mail_id"], :name => "index_offers_on_daily_mail_id"
 
 end

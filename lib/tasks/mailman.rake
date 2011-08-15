@@ -7,15 +7,9 @@ namespace :mail do
     task :receive => :environment do
       @gmail.inbox.emails(:unread, :from => "daily@e.groupon.ru").each do |email|
         body = email.body
-        str = body.decoded
+        str = body.parts[1].decoded
         str.force_encoding('iso-8859-5')
-        dm = DailyMail.create(:message => str.encode('utf-8'))
-        adv = dm.advertisements
-        hrf = dm.hrefs
-
-        adv.each_with_index do |ad, index|
-          Offer.create(:daily_mail => dm, :title => ad, :href => hrf[index])
-        end
+        Groupon.create(:message => str.encode('utf-8'))
       end
     end
 end
