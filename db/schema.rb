@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(:version => 20110807162243) do
 
-  create_table "groupons", :force => true do |t|
+  create_table "daily_mails", :force => true do |t|
     t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"
