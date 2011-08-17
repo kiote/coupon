@@ -11,7 +11,7 @@ gem 'nokogiri'
 gem 'sanitize'
 
 group :production do
-  gem 'mysql2', '~> 0.2.11'
+  gem 'mysql2'
 end
 
 group :development, :test do
