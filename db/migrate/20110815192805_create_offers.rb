@@ -7,7 +7,6 @@ class CreateOffers < ActiveRecord::Migration
 
       t.timestamps
     end
-  add_index :offers, :daily_mail_id
+    add_index :offers, :daily_mail_id
   end
 end
-
