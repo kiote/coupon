@@ -1,3 +1,5 @@
 Coupon::Application.routes.draw do
-  resources :daily_mails
+  resources :offers, :only => :index
+
+  root :to => 'offers#index'
 end

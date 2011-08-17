@@ -1,0 +1,38 @@
+<div id="block-lists" class="block">
+  <div class="content">
+    <div class="inner">
+      <ul class="list">
+        <li>
+          <div class="left">
+            <a href="#"><img alt="avatar" src="images/marvin.gif" class="avatar"></a>
+          </div>
+          <div class="item">
+            <p>Привет, я купонобот. Помогаю следить за скидками и оповещаю об интересных именно вам.
+              Делаю я это так: вы мне говорите, какими скидками итересуетесь, я просматриваю все
+              и оповещаю вас, когда нужно.
+              Пока я на стадии сбора информации. Ни с кем не разговариваю =Р</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="block-tables" class="block">
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Краткое описание</th>
+          <th>Ссылка</th>
+          <th>Источник</th>
+        </tr>
+        <% @offers.each do |offer| %>
+          <tr class="<%= cycle('odd', 'even') %>">
+              <td><%= offer.title %></td>
+              <td><a href="<%= offer.href %>" target="_blank">посмотреть</a></td>
+              <td>Групон</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
