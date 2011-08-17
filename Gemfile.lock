@@ -69,6 +69,7 @@ GEM
     mime (0.1)
     mime-types (1.16)
     multi_json (1.0.3)
+    mysql2 (0.2.11)
     nokogiri (1.5.0)
     polyglot (0.3.2)
     rack (1.3.2)
@@ -128,6 +129,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   mime
+  mysql2 (~> 0.2.11)
   nokogiri
   rails!
   rspec-rails
