@@ -39,5 +39,6 @@ module Coupon
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
     config.assets.enabled = true
+    config.action_controller.perform_caching = true
   end
 end

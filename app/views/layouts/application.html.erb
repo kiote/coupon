@@ -2,8 +2,10 @@
 <html>
 <head>
   <title>KuponoBot</title>
-  <%= stylesheet_link_tag "web-app-theme/base", "web-app-theme/themes/default/style", "web-app-theme/override", :cache => true %>
-  <%= javascript_include_tag 'jquery', :cache => true %>
+    <link href="/stylesheets/web-app-theme/base.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/web-app-theme/themes/default/style.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/web-app-theme/override.css" media="screen" rel="stylesheet" type="text/css" />
+    <script cache="true" src="/javascripts/jquery.js" type="text/javascript"></script>
   <%= csrf_meta_tag %>
 </head>
 <body>
