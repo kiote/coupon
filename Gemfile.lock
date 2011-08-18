@@ -126,6 +126,7 @@ GEM
       rack
       raindrops (~> 0.6)
     web-app-theme (0.7.0)
+    will_paginate (3.0.0)
 
 PLATFORMS
   ruby
@@ -144,3 +145,4 @@ DEPENDENCIES
   thin
   unicorn
   web-app-theme
+  will_paginate

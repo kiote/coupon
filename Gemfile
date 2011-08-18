@@ -11,6 +11,7 @@ gem 'nokogiri'
 gem 'sanitize'
 
 gem 'jquery-rails'
+gem 'will_paginate'
 
 group :production do
   gem 'mysql2'
