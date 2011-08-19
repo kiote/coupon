@@ -33,6 +33,12 @@
         </div>
       </div>
       <div id="sidebar">
+        <div class="block notice">
+          <%= form_tag root_path, :method => :get do %>
+            <%= text_field_tag :search %>
+            <%= submit_tag "Поиск" %>
+          <% end %>
+        </div>
         <%= yield :sidebar %>
       </div>
     </div>    
