@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110815192805) do
+ActiveRecord::Schema.define(:version => 20110820150251) do
 
   create_table "daily_mails", :force => true do |t|
     t.text     "message"
@@ -28,5 +28,9 @@ ActiveRecord::Schema.define(:version => 20110815192805) do
   end
 
   add_index "offers", ["daily_mail_id"], :name => "index_offers_on_daily_mail_id"
+
+  create_table "tweets", :force => true do |t|
+    t.integer "offer_id"
+  end
 
 end

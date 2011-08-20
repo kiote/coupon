@@ -1,4 +1,5 @@
 .bundle
+tweelog*
 db/*.sqlite3
 log/*.log
 tmp/

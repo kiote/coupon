@@ -13,6 +13,8 @@ gem 'sanitize'
 gem 'jquery-rails'
 gem 'will_paginate'
 
+gem 'robotwitter'
+
 group :production do
   gem 'mysql2'
 end
@@ -22,4 +24,5 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'annotate'
   gem 'thin'
+  gem 'pry'
 end
