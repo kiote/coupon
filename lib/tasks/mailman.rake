@@ -11,7 +11,7 @@ def receive(email)
   hrf = dm.hrefs
 
   adv.each_with_index do |ad, index|
-    Offer.create(:daily_mail => dm, :title => ad, :href => hrf[index]) unless Offer.find_by_href(hrf[index]).present?
+    Offer.create(:daily_mail => dm, :title => ad, :href => hrf[index]) unless Offer.today.find_by_href(hrf[index]).present?
   end
 end
 
