@@ -17,18 +17,18 @@ class DailyMail < ActiveRecord::Base
     doc = Nokogiri::HTML self.message
     adv = []
 
-    xpaths = ['/html/body/table/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td/div/a/strong/span',
-      '/html/body/table/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/a/strong/font',
-      '/html/body/table/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[2]/a/strong/font',
-      '/html/body/table/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[3]/a/strong/font',
-      '/html/body/table/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[4]/a/strong/font',
-      '/html/body/table/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[5]/a/strong/font',
-      '/html/body/table/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[6]/a/strong/font',
-      '/html/body/table/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[7]/a/strong/font',
-      '/html/body/table/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[8]/a/strong/font',
-      '/html/body/table/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[9]/a/strong/font',
-      '/html/body/table/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[10]/a/strong/font',
-      '/html/body/table/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[11]/a/strong/font',
+    xpaths = [
+      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[1]/div[1]/a/strong/span',
+      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/a/strong/font',
+      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[2]/a/strong/font',
+      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[3]/a/strong/font',
+      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[4]/a/strong/font',
+      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[5]/a/strong/font',
+      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[6]/a/strong/font',
+      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[7]/a/strong/font',
+      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[8]/a/strong/font',
+      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[9]/a/strong/font',
+      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[10]/a/strong/font',
     ]
 
     xpaths.each do |path|
@@ -43,17 +43,18 @@ class DailyMail < ActiveRecord::Base
   def hrefs
     doc = Nokogiri::HTML self.message
     href = []
-    xpaths = ['/html/body/table/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td/div/a',
-      '/html/body/table/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/table/tr/td[3]/a',
-      '/html/body/table/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[2]/a',
-      '/html/body/table/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[3]/a',
-      '/html/body/table/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[4]/a',
-      '/html/body/table/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[5]/a',
-      '/html/body/table/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[6]/a',
-      '/html/body/table/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[7]/a',
-      '/html/body/table/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[8]/a',
-      '/html/body/table/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[9]/a',
-      '/html/body/table/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[10]/a'
+    xpaths = [
+      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[1]/table/tr/td[1]/a',
+      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/table[1]/tr/td[3]/a',
+      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[2]/a',
+      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[3]/a',
+      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[4]/a',
+      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[5]/a',
+      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[6]/a',
+      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[7]/a',
+      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[8]/a',
+      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[9]/a',
+      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[10]/a',
     ]
 
     xpaths.each do |path|
