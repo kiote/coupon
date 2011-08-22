@@ -16,52 +16,67 @@ class DailyMail < ActiveRecord::Base
   def advertisements
     doc = Nokogiri::HTML self.message
     adv = []
-
-    xpaths = [
-      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[1]/div[1]/a/strong/span',
-      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/a/strong/font',
-      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[2]/a/strong/font',
-      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[3]/a/strong/font',
-      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[4]/a/strong/font',
-      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[5]/a/strong/font',
-      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[6]/a/strong/font',
-      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[7]/a/strong/font',
-      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[8]/a/strong/font',
-      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[9]/a/strong/font',
-      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[10]/a/strong/font',
-    ]
-
-    xpaths.each do |path|
-      doc.xpath(path).each do |a|
-        adv << Sanitize.clean(a.to_html).strip
-      end
-    end
-
-    adv.uniq
-  end
-
-  def hrefs
-    doc = Nokogiri::HTML self.message
     href = []
+
     xpaths = [
-      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[1]/table/tr/td[1]/a',
-      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/table[1]/tr/td[3]/a',
-      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[2]/a',
-      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[3]/a',
-      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[4]/a',
-      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[5]/a',
-      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[6]/a',
-      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[7]/a',
-      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[8]/a',
-      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[9]/a',
-      'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[10]/a',
+      [
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[1]/div[1]/a/strong/span',
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[1]/table/tr/td[1]/a'
+      ],
+      [
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/a/strong/font',
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/table[1]/tr/td[3]/a',
+      ],
+      [
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[2]/a/strong/font',
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[2]/a',
+      ],
+      [
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[3]/a/strong/font',
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[3]/a',
+
+      ],
+      [
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[4]/a/strong/font',
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[4]/a',
+      ],
+      [
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[5]/a/strong/font',
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[5]/a',
+      ],
+      [
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[6]/a/strong/font',
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[6]/a',
+      ],
+      [
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[7]/a/strong/font',
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[7]/a',
+      ],
+      [
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[8]/a/strong/font',
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[8]/a',
+      ],
+      [
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[9]/a/strong/font',
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[9]/a',
+
+      ],
+      [
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[10]/a/strong/font',
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[10]/a',
+      ],
     ]
 
-    xpaths.each do |path|
-      doc.xpath(path).each do |a|
-        href << a.attr("href")
+    xpaths.each do |elem|
+      elem.each_with_index do |path, i|
+        doc.xpath(path).each do |e|
+          adv << Sanitize.clean(e.to_html).strip if i == 0
+          href << e.attr("href")                 if i == 1
+        end
       end
     end
-    href.uniq
+
+    [adv.uniq, href.uniq]
   end
+
 end
