@@ -23,14 +23,12 @@
       <tbody>
         <tr>
           <th>Краткое описание</th>
-          <th>Ссылка</th>
           <th>Дата загрузки</th>
           <th>Источник</th>
         </tr>
         <% @offers.each do |offer| %>
           <tr class="<%= cycle('odd', 'even') %>">
-              <td><%= offer.title %></td>
-              <td><a href="<%= offer.href %>" target="_blank">посмотреть</a></td>
+              <td><a href="<%= offer.href %>" target="_blank"><%= offer.title %></a></td>
               <td><%= offer.created_at.strftime('%d-%m-%Y') %></td>
               <td>Групон</td>
           </tr>
