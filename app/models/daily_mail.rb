@@ -26,6 +26,7 @@ class DailyMail < ActiveRecord::Base
       [
         'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/a/strong/font',
         'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/table[1]/tr/td[3]/a',
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/a/strong/span/font',
       ],
       [
         'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[2]/a/strong/font',
@@ -70,8 +71,9 @@ class DailyMail < ActiveRecord::Base
     xpaths.each do |elem|
       elem.each_with_index do |path, i|
         doc.xpath(path).each do |e|
-          adv << Sanitize.clean(e.to_html).strip if i == 0
-          href << e.attr("href")                 if i == 1
+          adv  << Sanitize.clean(e.to_html).strip if i == 0
+          href << e.attr("href")                  if i == 1
+          adv  << Sanitize.clean(e.to_html).strip if i == 2
         end
       end
     end
