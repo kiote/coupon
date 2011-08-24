@@ -31,49 +31,61 @@ class DailyMail < ActiveRecord::Base
       [
         'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[2]/a/strong/font',
         'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[2]/a',
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[2]/a/strong/span/font',
       ],
       [
         'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[3]/a/strong/font',
         'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[3]/a',
-
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[3]/a/strong/span/font',
       ],
       [
         'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[4]/a/strong/font',
         'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[4]/a',
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[4]/a/strong/span/font',
       ],
       [
         'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[5]/a/strong/font',
         'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[5]/a',
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[5]/a/strong/span/font',
       ],
       [
         'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[6]/a/strong/font',
         'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[6]/a',
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[6]/a/strong/span/font',
       ],
       [
         'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[7]/a/strong/font',
         'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[7]/a',
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[7]/a/strong/span/font',
       ],
       [
         'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[8]/a/strong/font',
         'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[8]/a',
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[8]/a/strong/span/font',
       ],
       [
         'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[9]/a/strong/font',
         'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[9]/a',
-
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[9]/a/strong/span/font',
       ],
       [
         'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[10]/a/strong/font',
         'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[10]/a',
+        'html/body/table[1]/tr[2]/td/div/table/tr[2]/td[2]/table/tr[2]/td/table/tr/td[2]/div[10]/a/strong/span/font',
       ],
     ]
 
     xpaths.each do |elem|
       elem.each_with_index do |path, i|
         doc.xpath(path).each do |e|
-          adv  << Sanitize.clean(e.to_html).strip if i == 0
-          href << e.attr("href")                  if i == 1
-          adv  << Sanitize.clean(e.to_html).strip if i == 2
+          case i
+            when 0,2
+              s = Sanitize.clean(e.to_html).strip
+              adv << s unless s==''
+            when 1
+              s = e.attr("href")
+              href << s unless s==''
+          end
         end
       end
     end
